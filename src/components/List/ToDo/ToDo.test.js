@@ -5,7 +5,7 @@ import chai, { expect } from "chai";
 import chaiEnzyme from "chai-enzyme";
 import sinon from "sinon";
 
-chai.use( chaiEnzyme );
+chai.use( chaiEnzyme() );
 
 import ToDo from "./ToDo";
 
@@ -25,12 +25,11 @@ test( "ToDo displays text based on props.text", () => {
 	);
 
 	// .find is like document.querySelector, it finds an element based on:
-	// Element i.e "button"
-	// id or class i.e "#app" ".foo"
-	// Component name, if we wanted to find our ToDo component from a parent component: "ToDo"
-	// Once we have found the element we use the .text() method to extract text
-	// then assert that it equals what we expect based on the props above
-	expect( toDo.find( ".to-do__info" ).text() ).to.equal( "Test ToDo" );
+	// 	- Element i.e "button"
+	// 	- id or class i.e "#app" ".foo"
+	// 	- Component name, if we wanted to find our ToDo component from a parent component: "ToDo"
+	// Once we have found the element we use the chai-enzyme assertion .to.have.text to check the element text
+	expect( toDo.find( ".to-do__info" ) ).to.have.text( "Test ToDo" );
 } );
 
 test( "ToDo info box changes class based on props.completion", () => {

@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import chai, { expect } from "chai";
 import chaiEnzyme from "chai-enzyme";
 
-chai.use( chaiEnzyme );
+chai.use( chaiEnzyme() );
 
 import List from "./List";
 
