@@ -16,3 +16,4 @@ NPM Commands(can all be found in the `package.json`):
 * `npm run report` - Gives an HTML/CSS page you can view with `live-server` to get a better idea of what you might be missing
 * `npm run dev` - Runs the project on port 8080 via webpack dev server
 * `npm run lint` - Why code if it can't be beautiful?
+
