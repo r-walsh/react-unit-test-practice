@@ -1,51 +1,45 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import "./NewToDo.styl";
+import './NewToDo.styl';
 
 export default class NewToDo extends Component {
-	static get propTypes() {
-		return {
-			submit: PropTypes.func.isRequired
-		};
-	}
+  static propTypes = { submit: PropTypes.func.isRequired };
 
-	constructor( props ) {
-		super( props );
+  constructor(props) {
+    super(props);
 
-		this.state = { toDo: "" };
+    this.state = { toDo: '' };
 
-		this.handleChange = this.handleChange.bind( this );
-		this.submitTodo = this.submitTodo.bind( this );
-	}
+    this.handleChange = this.handleChange.bind(this);
+    this.submitTodo = this.submitTodo.bind(this);
+  }
 
-	handleChange( event ) {
-		this.setState( { toDo: event.target.value } );
-	}
+  handleChange(event) {
+    this.setState({ toDo: event.target.value });
+  }
 
-	submitTodo( event ) {
-		event.preventDefault();
+  submitTodo(event) {
+    event.preventDefault();
 
-		this.props.submit( this.state.toDo );
+    this.props.submit(this.state.toDo);
 
-		this.setState( { toDo: "" } );
-	}
+    this.setState({ toDo: '' });
+  }
 
-	render() {
-		const { toDo } = this.state;
+  render() {
+    const { toDo } = this.state;
 
-		return (
-			<form
-				className="new-to-do"
-				onSubmit={ this.submitTodo }
-			>
-				<input
-					className="new-to-do__input"
-					onChange={ this.handleChange }
-					placeholder="What needs to be done?"
-					type="text"
-					value={ toDo }
-				/>
-			</form>
-		);
-	}
+    return (
+      <form className="new-to-do" onSubmit={this.submitTodo}>
+        <input
+          className="new-to-do__input"
+          onChange={this.handleChange}
+          placeholder="What needs to be done?"
+          type="text"
+          value={toDo}
+        />
+      </form>
+    );
+  }
 }

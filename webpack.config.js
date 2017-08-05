@@ -1,48 +1,51 @@
-const webpack = require( "webpack" );
+const webpack = require('webpack');
+const Dashboard = require('webpack-dashboard/plugin');
 
 module.exports = {
-	devServer: {
-		contentBase: "./dist"
-		, historyApiFallback: true
-		, hot: true
-		, stats: {
-			colors: true
-		}
-	}
-	, devtool: "source-map"
+  devServer: {
+    contentBase: './dist',
+    historyApiFallback: true,
+    hot: true,
+    stats: {
+      colors: true,
+    },
+  },
+  devtool: 'source-map',
 
-	, entry: [
-		"webpack-dev-server/client?http://localhost:8080"
-		, "webpack/hot/only-dev-server"
-		, "./src/index.js"
-	]
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './src/index.js',
+  ],
 
-	, externals: {
-		"react/addons": true
-		, "react/lib/ExecutionEnvironment": true
-		, "react/lib/ReactContext": true
-	}
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
 
-	, module: {
-		loaders: [
-			{ exclude: /node_modules/, loaders: [ "react-hot", "babel" ], test: /\.js/ }
-			, { loader: "style-loader!css-loader!stylus-loader", test: /\.styl/ }
-			, { loader: "style-loader!css-loader", test: /\.css/ }
-			, { loader: "json-loader", test: /\.json$/ }
-		]
+  module: {
+    rules: [
+      {
+        exclude: /node_modules/,
+        use: 'babel-loader',
+        test: /\.js/,
+      },
+      { use: ['style-loader', 'css-loader', 'stylus-loader'], test: /\.styl/ },
+      { use: ['style-loader', 'css-loader'], test: /\.css/ },
+    ],
 
-		, noParse: [ /\/sinon\.js/ ]
-	}
-	, output: {
-		filename: "bundle.js"
-		, path: `${ __dirname  }/dist/`
-		, publicPath: "http://localhost:8080/"
-	}
+    noParse: [/\/sinon\.js/],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: `${__dirname}/dist/`,
+    publicPath: 'http://localhost:8080/',
+  },
 
-	, plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [new Dashboard()],
 
-	, resolve: {
-		extensions: [ "", ".js" ]
-	}
-
+  resolve: {
+    extensions: ['.js'],
+  },
 };
