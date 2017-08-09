@@ -6,34 +6,25 @@ import NewToDo from './NewToDo/NewToDo';
 import ToDo from './ToDo/ToDo';
 
 export default class List extends Component {
-  constructor(props) {
-    super(props);
+  state = { toDos: [] };
 
-    this.state = { toDos: [] };
+  submitToDo = text =>
+    this.setState(() => ({
+      toDos: [{ complete: false, text }, ...this.state.toDos],
+    }));
 
-    this.submitToDo = this.submitToDo.bind(this);
-  }
+  toggleCompletion = ({ text }) =>
+    this.setState(({ toDos }) => ({
+      toDos: toDos.map(
+        toDo =>
+          toDo.text === text ? { complete: !toDo.complete, text } : toDo,
+      ),
+    }));
 
-  submitToDo(text) {
-    this.setState({ toDos: [{ complete: false, text }, ...this.state.toDos] });
-  }
-
-  toggleCompletion(toggledToDo) {
-    this.setState({
-      toDos: this.state.toDos.map(toDo => {
-        if (toDo.text === toggledToDo.text) {
-          return { complete: !toDo.complete, text: toDo.text };
-        }
-        return toDo;
-      }),
-    });
-  }
-
-  deleteToDo(toArchive) {
-    this.setState({
-      toDos: this.state.toDos.filter(({ text }) => text !== toArchive.text),
-    });
-  }
+  deleteToDo = ({ text }) =>
+    this.setState(({ toDos }) => ({
+      toDos: toDos.filter(toDo => toDo.text !== text),
+    }));
 
   render() {
     const toDos = this.state.toDos.map(toDo =>

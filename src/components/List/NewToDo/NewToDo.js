@@ -6,26 +6,17 @@ import './NewToDo.styl';
 export default class NewToDo extends Component {
   static propTypes = { submit: PropTypes.func.isRequired };
 
-  constructor(props) {
-    super(props);
+  state = { toDo: '' };
 
-    this.state = { toDo: '' };
+  handleChange = event => this.setState({ toDo: event.target.value })
 
-    this.handleChange = this.handleChange.bind(this);
-    this.submitTodo = this.submitTodo.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ toDo: event.target.value });
-  }
-
-  submitTodo(event) {
+  submitTodo = event => {
     event.preventDefault();
 
     this.props.submit(this.state.toDo);
 
-    this.setState({ toDo: '' });
-  }
+    this.setState(() => ({ toDo: '' }));
+  };
 
   render() {
     const { toDo } = this.state;
