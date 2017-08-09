@@ -14,11 +14,9 @@ describe('NewToDo', () => {
   it('updates state on input change', () => {
     const newToDo = shallow(<NewToDo submit={() => {}} />);
 
-    newToDo
-      .find('.new-to-do__input')
-      .simulate('change', {
-        target: { value: 'Give a talk on unit testing!' },
-      });
+    newToDo.find('.new-to-do__input').simulate('change', {
+      target: { value: 'Give a talk on unit testing!' },
+    });
 
     expect(newToDo.state().toDo).toBe('Give a talk on unit testing!');
   });
@@ -32,5 +30,24 @@ describe('NewToDo', () => {
 
     expect(submit.mock.calls).toHaveLength(1);
     expect(submit.mock.calls[0]).toEqual(['Hit 100% coverage']);
+  });
+
+  it('clears state on submit', () => {
+    const newToDo = shallow(<NewToDo submit={() => {}} />);
+
+    newToDo.setState({ toDo: 'Hit 100% coverage' });
+    newToDo.find('.new-to-do').simulate('submit', { preventDefault() {} });
+
+    expect(newToDo.state().toDo).toBe('');
+  });
+
+  it('calls preventDefault on submit', () => {
+    const preventDefault = jest.fn();
+    const newToDo = shallow(<NewToDo submit={() => {}} />);
+
+    newToDo.setState({ toDo: 'Hit 100% coverage' });
+    newToDo.find('.new-to-do').simulate('submit', { preventDefault });
+
+    expect(preventDefault.mock.calls).toHaveLength(1);
   });
 });
