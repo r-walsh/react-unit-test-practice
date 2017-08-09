@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewToDo renders 1`] = `
+<form
+  className="new-to-do"
+  onSubmit={[Function]}
+>
+  <input
+    className="new-to-do__input"
+    onChange={[Function]}
+    placeholder="What needs to be done?"
+    type="text"
+    value=""
+  />
+</form>
+`;
