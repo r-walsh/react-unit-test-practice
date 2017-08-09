@@ -6,7 +6,6 @@ Your goal is to write tests for the other two components and reach 100% code cov
 
 * [Enzyme Docs](http://airbnb.io/enzyme/docs/api/)
 * [Jest Docs](https://facebook.github.io/jest/)
-* [Sinon Docs](http://sinonjs.org/docs/)
 
 NPM Commands(can all be found in the `package.json`):
 * `npm run test` - Runs the test suite a single time
