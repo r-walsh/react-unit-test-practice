@@ -27,7 +27,7 @@ export default class List extends Component {
     }));
 
   render() {
-    const [toDos] = this.state.toDos.map(toDo =>
+    const toDos = this.state.toDos.map(toDo =>
       <ToDo
         {...toDo}
         deleteToDo={this.deleteToDo.bind(this, toDo)}
