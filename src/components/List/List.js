@@ -40,7 +40,7 @@ export default class List extends Component {
       <div className="list">
         <h1 className="list__header">todos</h1>
         <NewToDo submit={this.submitToDo} />
-        {toDos}
+        toDos
       </div>
     );
   }
