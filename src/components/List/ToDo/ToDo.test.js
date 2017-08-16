@@ -77,8 +77,8 @@ describe('ToDo', () => {
 
     // Here we check whether our mocked function has been called the expected number of times
     // If we needed to access the arguments we could say
-    // expect(toggleCompletionSpy.mock.calls[0]).toEqual(expectedArguments);
-    expect(toggleCompletionSpy.mock.calls).toHaveLength(1);
+    // expect(toggleCompletionSpy).toHaveBeenCalledWith(expectedArguments);
+    expect(toggleCompletionSpy).toHaveBeenCalled();
   });
 
   it('ToDo calls props.deleteTodo on delete button click', () => {
@@ -95,6 +95,6 @@ describe('ToDo', () => {
 
     toDo.find('button').simulate('click');
 
-    expect(deleteToDoSpy.mock.calls).toHaveLength(1);
+    expect(deleteToDoSpy).toHaveBeenCalled();
   });
 });
