@@ -2,7 +2,6 @@
   "name": "react-unit-test-practice",
   "version": "1.0.0",
   "description": "A repository to practice your react unit testing skills",
-  "main": "./src/index.js",
   "repository": "https://github.com/r-walsh/react-unit-test-practice",
   "keywords": [
     "react",
@@ -17,7 +16,7 @@
   "scripts": {
     "dev": "webpack-dashboard -- webpack-dev-server --hot --inline --progress",
     "prettier": "prettier --single-quote --trailing-comma all --write \"./src/**/*.js\" \"./webpack.config.js\" \"./test-config/*.js\"",
-    "test": "cross-env NODE_ENV=test node ./test-config",
+    "test": "cross-env NODE_ENV=test jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",
     "view-coverage": "live-server ./coverage"
@@ -49,33 +48,18 @@
     }
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "modulePaths": [
-      "<rootDir>/src/"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(jpg|png|svg)$": "<rootDir>/test-config/file-mock.js",
-      "^.+\\.styl": "<rootDir>/test-config/style-mock.js"
-    },
-    "transform": {
-      "^.+\\.js$": "<rootDir>/test-config/transform.js"
-    },
-    "setupFiles": [
-      "<rootDir>/test-config/setup.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(dist|node_modules)/"
-    ],
-    "testEnvironment": "jsdom",
-    "testRegex": "\\.test\\.js$",
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage",
     "coverageReporters": [
       "text",
       "html"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|png|svg)$": "<rootDir>/test-config/file-mock.js",
+      "^.+\\.styl": "<rootDir>/test-config/style-mock.js"
+    },
+    "setupFiles": [
+      "<rootDir>/test-config/setup.js"
     ]
   },
   "dependencies": {
@@ -85,7 +69,6 @@
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
-    "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
