@@ -30,8 +30,7 @@ describe('NewToDo', () => {
       .simulate('change', { target: { value: 'Hit 100% coverage' } });
     newToDo.find('.new-to-do').simulate('submit', { preventDefault() {} });
 
-    expect(submit.mock.calls).toHaveLength(1);
-    expect(submit.mock.calls[0]).toEqual(['Hit 100% coverage']);
+    expect(submit).toHaveBeenCalledWith('Hit 100% coverage');
   });
 
   it('clears state on submit', () => {
@@ -54,6 +53,6 @@ describe('NewToDo', () => {
       .simulate('change', { target: { value: 'Hit 100% coverage' } });
     newToDo.find('.new-to-do').simulate('submit', { preventDefault });
 
-    expect(preventDefault.mock.calls).toHaveLength(1);
+    expect(preventDefault).toHaveBeenCalled();
   });
 });
