@@ -12,6 +12,7 @@ exports[`NewToDo renders 1`] = `
   <NewToDo
     submit={[Function]}
   />
+  toDos
 </div>
 `;
 
@@ -27,17 +28,6 @@ exports[`NewToDo renders a list of to dos based on state.toDos 1`] = `
   <NewToDo
     submit={[Function]}
   />
-  <ToDo
-    complete={false}
-    deleteToDo={[Function]}
-    text="One"
-    toggleCompletion={[Function]}
-  />
-  <ToDo
-    complete={true}
-    deleteToDo={[Function]}
-    text="Two"
-    toggleCompletion={[Function]}
-  />
+  toDos
 </div>
 `;
